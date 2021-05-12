@@ -8,13 +8,23 @@
 			body {
 				background: #080808;
 				font-size: 12px; !important
+				-webkit-user-select: none; /* Safari */        
+				-moz-user-select: none; /* Firefox */
+				-ms-user-select: none; /* IE10+/Edge */
+				user-select: none; /* Standard */
+
 			}
-			
+				
+			header {
+				
+				border-top: 1px solid rgba(0, 169, 247, 0.5);
+				border-bottom: 1px solid rgba(0, 169, 247, 0.3);
+			}
 			
 			.title {
 				color: #00a9f7;
-				letter-spacing: 5px;
-				font-size: 35px;
+				letter-spacing: 8px;
+				font-size: 32px;
 				text-shadow: 1px 1px 5px #00a9f7;
 			}
 			
@@ -26,16 +36,15 @@
 				background: #121212; !important
 			}
 			
+		
+		
+			
 			.table tr:hover {
 				background: rgba(0, 169, 247, 0.1);
-				transition: background-color 0.2s
+				transition: background-color 0.2s;
+				cursor: pointer;
 			}
-			
-			header {
-				
-				border-top: 1px solid rgba(0, 169, 247, 0.5);
-				border-bottom: 1px solid rgba(0, 169, 247, 0.3);
-			}
+		
 			
 			.table td, .table th {
 				border-top: none; !important;
@@ -45,6 +54,16 @@
 			.table thead th {
 				border-bottom: 1px solid rgba(0, 169, 247, 0.3);
 			}
+			
+			
+			th, tr {
+				text-align: center !important;
+			}
+			
+			td {
+				padding: 0.45rem;
+			}
+			
 			
 		</style>
 	</head>
@@ -60,7 +79,7 @@
 				<table class="table table-dark">
 				  <thead>
 					<tr>
-					  <th scope="col">STEAMID</th>
+					  <th scope="col" class="text-center">STEAMID</th>
 					  <th scope="col">Steam name</th>
 					  <th scope="col">Steam level</th>
 					  <th scope="col">VAC Bans</th>
