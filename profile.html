@@ -51,7 +51,9 @@
 
 	<body>
 		<header class="margin-bottom">
-			<p class="text-center title">NEVERLOSE PROFILER</p>
+			<div class="title text-center">
+				<span class='neverlose-letter'>N</span><span class='neverlose-letter'>E</span><span class='neverlose-letter'>V</span><span class='neverlose-letter'>E</span><span class='neverlose-letter'>R</span><span class='neverlose-letter'>L</span><span class='neverlose-letter'>O</span><span class='neverlose-letter'>S</span><span class='neverlose-letter'>E</span><span class='neverlose-letter'> </span><span class='neverlose-letter'>P</span><span class='neverlose-letter'>R</span><span class='neverlose-letter'>O</span><span class='neverlose-letter'>F</span><span class='neverlose-letter'>I</span><span class='neverlose-letter'>L</span><span class='neverlose-letter'>E</span><span class='neverlose-letter'>R</span>
+			</div>
 		</header>
 	
 			<div class="table-responsive">
@@ -111,6 +113,53 @@
 				</table>
 			</div>
 		
+		<script>
+			// sixthsense phrase shine effect
+			
+			let chars = document.getElementsByClassName("neverlose-letter");
+			let current_char_index = 0;
+			
+			let shine_delay = 1000; // The wait time for the shine effect to happen again (ms)
+			let color_change_delay = 200 // The delay of color change (must be same as sixthsense-phrase-letter css class transition speed) (ms)
+			
+			let delay = Date.now() + shine_delay
+			
+			let default_color = "rgba(0, 169, 247, 1)" // can be rgb(0,0,0) or hex color
+			let shine_color = "rgba(0, 169, 247, 1)" // can be rgb(0,0,0) or hex color
+			// change default color in css sixthsense-phrase-letter css class as well
+						
+			setInterval(() => {
+				if (Date.now() >= delay) {		
+					if (current_char_index >= chars.length) {
+						current_char_index = 0;
+						delay = Date.now() + shine_delay
+						return
+					}
+					chars[current_char_index].style.color = shine_color;
+					chars[current_char_index].style.textShadow = "1px 1px 8px " + shine_color;
+					chars[current_char_index].colors_set = [true, Date.now()]
+					current_char_index += 1
+				}else {
+					current_char_index = 0;
+				}
+				
+				for (let i=0; i < chars.length; i++){
+					let char = chars[i]
+					if (char.colors_set && char.colors_set[0]) {
+						
+						if (Date.now() - char.colors_set[1] > color_change_delay) {
+							char.colors_set[0] = false
+							char.style.color = default_color;
+							char.style.textShadow = "1px 1px 5px " + shine_color;
+							
+						}
+					}
+				}
+			
+			}, 50)
+			
+			
+		</script>
 	</body>
 
 </html>
